@@ -8,19 +8,19 @@ PHP-DBCLOUD is a php library that creates backup of your PostgreSql/MySql databa
 
 ## Features
 
-- Creating backups
- * MySQL
- * PostgreSQL
+* Creating backups
+ 	* MySQL
+ 	* PostgreSQL
 
-- Compress backups
- * gZip
+* Compress backups
+ 	* gZip
 
-- Sync backups to other locations
- * Amazon s3
- * Dropbox
- * Google Cloud Storage
- * FTP
- * SFTP
+* Sync backups to other locations
+ 	* Amazon s3
+ 	* Dropbox
+	* Google Cloud Storage
+ 	* FTP
+ 	* SFTP
 
 ## Requirements
 
