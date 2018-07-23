@@ -3,9 +3,7 @@
 PHP-DBCLOUD is a php library that creates backup of your PostgreSql/MySql database and uploads it to the cloud. It also support restoring of the backed up database from the cloud.
 
 
-[![GitHub license](https://img.shields.io/github/license/davmixcool/php-dbcloud.svg)](https://github.com/davmixcool/php-dbcloud/blob/master/LICENSE)
-
-
+[![GitHub license](https://img.shields.io/github/license/davmixcool/php-dbcloud.svg)](https://github.com/davmixcool/php-dbcloud/blob/master/LICENSE) 
 [![GitHub issues](https://img.shields.io/github/issues/davmixcool/php-dbcloud.svg)](https://github.com/davmixcool/php-dbcloud/issues)
 
 ## Features
