@@ -74,7 +74,7 @@ composer require league/flysystem-sftp
 ```php
 //config/database.php
 
-'mysql' => [
+'development' => [
     'type' => 'mysql',
     'host' => 'localhost',
     'port' => '3306',
@@ -93,7 +93,7 @@ composer require league/flysystem-sftp
     // add additional options to dump-command (like '--max-allowed-packet')
     'extraParams'=>null,
 ],
-'postgres' => [
+'production' => [
     'type' => 'postgresql',
     'host' => 'localhost',
     'port' => '5432',
@@ -195,23 +195,23 @@ return new Sync($filesystems, $databases, $compressors);
 
 #### Backup to configured database
 
-Backup mysql database to `Amazon S3`. The S3 backup path will be `test/backup.sql.gz` in the end, when `gzip` is done with it.
+Backup the development database to `Amazon S3`. The S3 backup path will be `test/backup.sql.gz` in the end, when `gzip` is done with it.
 
 
 ```php
 use PhpDbCloud\Filesystems\Destination;
 
 $sync = require 'bootstrap.php';
-$sync->makeBackup()->run('mysql', [new Destination('s3', 'test/backup.sql')], 'gzip');
+$sync->makeBackup()->run('development', [new Destination('s3', 'test/backup.sql')], 'gzip');
 ```
 
 #### Restore from configured database
 
-Restore the database file `test/backup.sql.gz` from `Amazon S3` to `mysql` database.
+Restore the database file `test/backup.sql.gz` from `Amazon S3` to the `development` database.
 
 ```php
 $sync = require 'bootstrap.php';
-$sync->makeRestore()->run('s3', 'test/backup.sql.gz', 'mysql', 'gzip');
+$sync->makeRestore()->run('s3', 'test/backup.sql.gz', 'development', 'gzip');
 ```
 
 > This package does not allow you to backup from one database type and restore to another. A MySQL dump is not compatible with PostgreSQL.

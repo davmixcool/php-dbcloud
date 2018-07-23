@@ -1,4 +1,4 @@
-<?php namespace Sync;
+<?php namespace PhpDbCloud;
 
 use PhpDbCloud\Procedures;
 use Symfony\Component\Process\Process;

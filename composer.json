@@ -31,6 +31,9 @@
     	"srmklive/flysystem-dropbox-v2": "Dropbox API v2 adapter support.",
     	"league/flysystem-sftp": "Sftp adapter support."
  	 },
+     "config": {
+       "bin-dir": "bin"
+     },
     "autoload": {
         "psr-4": {
             "PhpDbCloud\\": "src/"
