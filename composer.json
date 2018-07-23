@@ -1,0 +1,28 @@
+{
+    "name": "davmixcool/php-dbcloud",
+    "type": "library",
+    "description": "Easily backup PostgreSql or MySql database to the cloud",
+    "keywords": ["db","Database","MySql","PostgreSql","Sql"],
+    "homepage": "https://github.com/davmixcool/php-dbcloud",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Oti",
+            "email": "davmixcool@gmail.com",
+            "role": "Senior Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Davmixcool\\PhpDbCloud": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Davmixcool\\PhpDbCloud\\Tests\\": "tests/"
+        }
+    }
+}
