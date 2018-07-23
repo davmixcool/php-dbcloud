@@ -13,16 +13,33 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
-    },
+    	"php": ">=5.5.9",
+    	"symfony/process": "^2.1 || ^3.0 || ^4.0",
+    	"league/flysystem": "^1.0"
+	 },
+	 "require-dev": {
+	    "league/flysystem-aws-s3-v3": "~1.0",
+	    "league/flysystem-dropbox": "~1.0",
+	    "srmklive/flysystem-dropbox-v2": "~1.0",
+	    "league/flysystem-rackspace": "~1.0",
+	    "league/flysystem-sftp": "~1.0",
+	    "dropbox/dropbox-sdk": "~1.1",
+	    "aws/aws-sdk-php": "~3.0"
+	 },
+	"suggest": {
+    	"league/flysystem-aws-s3-v3": "AwsS3 adapter support.",
+    	"league/flysystem-aws-s3-v2": "GoogleCS adapter support.",
+    	"srmklive/flysystem-dropbox-v2": "Dropbox API v2 adapter support.",
+    	"league/flysystem-sftp": "Sftp adapter support."
+ 	 },
     "autoload": {
-        "psr-0": {
-            "Davmixcool\\PhpDbCloud": "src/"
+        "psr-4": {
+            "PhpDbCloud\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Davmixcool\\PhpDbCloud\\Tests\\": "tests/"
+            "PhpDbCloud\\Tests\\": "tests/"
         }
     }
 }
