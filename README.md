@@ -1,6 +1,6 @@
 # PHP-DBCLOUD
 
-PHP-DBCLOUD is a php library that creates backup of your PostgreSql/MySql database and uploads it to the cloud. It also support restoring of the backed up database from the cloud.
+PHP-DBCLOUD is a php library that creates backup of your PostgreSql / MySql database and uploads it to the cloud. It also support restoring of the backedup database from the cloud.
 
 
 [![GitHub license](https://img.shields.io/github/license/davmixcool/php-dbcloud.svg)](https://github.com/davmixcool/php-dbcloud/blob/master/LICENSE) 
@@ -108,6 +108,7 @@ composer require league/flysystem-sftp
 
 ```php
 // config/storage.php
+
 's3' => [
     'type' => 'AwsS3',
     'key'    => '',
@@ -173,11 +174,11 @@ use PhpDbCloud\Sync;
 
 // build providers
 $filesystems = new Filesystems\FilesystemProvider(Config::fromPhpFile('config/storage.php'));
-$filesystems->add(new Filesystems\Awss3Filesystem);
-$filesystems->add(new Filesystems\GcsFilesystem);
-$filesystems->add(new Filesystems\DropboxFilesystem);
-$filesystems->add(new Filesystems\FtpFilesystem);
-$filesystems->add(new Filesystems\SftpFilesystem);
+$filesystems->add(new Filesystems\Awss3Filesystem); 
+$filesystems->add(new Filesystems\GcsFilesystem); 
+$filesystems->add(new Filesystems\DropboxFilesystem); 
+$filesystems->add(new Filesystems\FtpFilesystem); 
+$filesystems->add(new Filesystems\SftpFilesystem); 
 
 $databases = new Databases\DatabaseProvider(Config::fromPhpFile('config/database.php'));
 $databases->add(new Databases\MysqlDatabase);
