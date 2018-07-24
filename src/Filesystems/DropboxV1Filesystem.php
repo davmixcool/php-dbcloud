@@ -5,10 +5,10 @@ use Dropbox\Client;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Class DropboxFilesystem
+ * Class DropboxV1Filesystem
  * @package PhpDbCloud\Filesystems
  */
-class DropboxFilesystem implements Filesystem {
+class DropboxV1Filesystem implements Filesystem {
 
     /**
      * Test fitness of visitor.
@@ -16,7 +16,7 @@ class DropboxFilesystem implements Filesystem {
      * @return bool
      */
     public function handles($type) {
-        return strtolower($type) == 'dropbox';
+        return strtolower($type) == 'dropboxv1';
     }
 
     /**

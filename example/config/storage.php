@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'local' => [
+        'type' => 'Local',
+        'root' => '/path/to/working/directory',
+     ],
     's3' => [
         'type' => 'AwsS3',
         'key'    => '',
@@ -18,14 +22,22 @@ return [
         'bucket' => '',
         'root'   => '',
     ],
-    'dropbox' => [
-        'type' => 'Dropbox',
+    'dropbox-v2' => [
+        'type' => 'DropboxV2',
         'token' => '',
         'key' => '',
         'secret' => '',
         'app' => '',
         'root' => '',
     ],
+    'dropbox-v1' => [
+        'type' => 'DropboxV1',
+        'token' => '',
+        'key' => '',
+        'secret' => '',
+        'app' => '',
+        'root' => '',
+     ],
     'ftp' => [
         'type' => 'Ftp',
         'host' => '',

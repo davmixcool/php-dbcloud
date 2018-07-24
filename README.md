@@ -57,6 +57,9 @@ Then, you'll need to select the appropriate packages for the adapters that you w
 # to support Amazon s3
 composer require league/flysystem-aws-s3-v3
 
+# to support Dropbox (api v1)
+composer require srmklive/flysystem-dropbox
+
 # to support Dropbox (api v2)
 composer require srmklive/flysystem-dropbox-v2
 
@@ -134,7 +137,7 @@ return [
         'bucket' => '',
         'root'   => '',
     ],
-    'dropbox' => [
+    'dropbox-v2' => [
         'type' => 'DropboxV2',
         'token' => '',
         'key' => '',
@@ -142,6 +145,14 @@ return [
         'app' => '',
         'root' => '',
     ],
+    'dropbox-v1' => [
+        'type' => 'DropboxV1',
+        'token' => '',
+        'key' => '',
+        'secret' => '',
+        'app' => '',
+        'root' => '',
+     ],
     'ftp' => [
         'type' => 'Ftp',
         'host' => '',
@@ -185,7 +196,8 @@ use PhpDbCloud\Sync;
 $filesystems = new Filesystems\FilesystemProvider(Config::fromPhpFile('config/storage.php'));
 $filesystems->add(new Filesystems\Awss3Filesystem); 
 $filesystems->add(new Filesystems\GcsFilesystem); 
-$filesystems->add(new Filesystems\DropboxFilesystem); 
+$filesystems->add(new Filesystems\DropboxV1Filesystem); 
+$filesystems->add(new Filesystems\DropboxV2Filesystem); 
 $filesystems->add(new Filesystems\FtpFilesystem); 
 $filesystems->add(new Filesystems\LocalFilesystem);
 $filesystems->add(new Filesystems\SftpFilesystem); 
@@ -205,23 +217,23 @@ return new Sync($filesystems, $databases, $compressors);
 
 #### Backup to configured database
 
-Backup the development database to `Amazon S3`. The S3 backup path will be `test/backup.sql.gz` in the end, when `gzip` is done with it.
+Backup the development database to `Dropbox Api V2`. The Dropbox backup path will be `test/backup.sql.gz` in the end, when `gzip` is done with it.
 
 
 ```php
 use PhpDbCloud\Filesystems\Destination;
 
 $sync = require 'bootstrap.php';
-$sync->makeBackup()->run('development', [new Destination('s3', 'test/backup.sql')], 'gzip');
+$sync->makeBackup()->run('development', [new Destination('dropbox-v2', 'test/backup.sql')], 'gzip');
 ```
 
 #### Restore from configured database
 
-Restore the database file `test/backup.sql.gz` from `Amazon S3` to the `development` database.
+Restore the database file `test/backup.sql.gz` from `Dropbox Api V2` to the `development` database.
 
 ```php
 $sync = require 'bootstrap.php';
-$sync->makeRestore()->run('s3', 'test/backup.sql.gz', 'development', 'gzip');
+$sync->makeRestore()->run('dropbox-v2', 'test/backup.sql.gz', 'development', 'gzip');
 ```
 
 > This package does not allow you to backup from one database type and restore to another. A MySQL dump is not compatible with PostgreSQL.

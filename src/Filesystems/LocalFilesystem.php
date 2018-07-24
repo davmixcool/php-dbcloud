@@ -1,11 +1,11 @@
-<?php namespace BackupManager\Filesystems;
+<?php namespace PhpDbCloud\Filesystems;
 
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
  * Class LocalFilesystem
- * @package BackupManager\Filesystems
+ * @package PhpDbCloud\Filesystems
  */
 class LocalFilesystem implements Filesystem {
 

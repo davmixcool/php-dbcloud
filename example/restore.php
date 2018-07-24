@@ -1,4 +1,4 @@
 <?php
 
 $sync = require 'bootstrap.php';
-$sync->makeRestore()->run('s3', 'test/backup.sql.gz', 'mysql', 'gzip');
+$sync->makeRestore()->run('dropbox-v2', 'test/backup.sql.gz', 'development', 'gzip');
