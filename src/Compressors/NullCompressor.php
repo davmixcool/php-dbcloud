@@ -1,48 +1,59 @@
-<?php namespace PhpDbCloud\Compressors;
+<?php
+
+namespace PhpDbCloud\Compressors;
 
 /**
- * Class NullCompressor
- * @package PhpDbCloud\Compressors
+ * Class NullCompressor.
  */
-class NullCompressor extends Compressor {
-
+class NullCompressor extends Compressor
+{
     /**
      * @param $type
+     *
      * @return bool
      */
-    public function handles($type) {
+    public function handles($type)
+    {
         return strtolower($type) == 'null';
     }
 
     /**
      * @param $inputPath
+     *
      * @return string
      */
-    public function getCompressCommandLine($inputPath) {
+    public function getCompressCommandLine($inputPath)
+    {
         return '';
     }
 
     /**
      * @param $outputPath
+     *
      * @return string
      */
-    public function getDecompressCommandLine($outputPath) {
+    public function getDecompressCommandLine($outputPath)
+    {
         return '';
     }
 
     /**
      * @param $inputPath
+     *
      * @return string
      */
-    public function getCompressedPath($inputPath) {
+    public function getCompressedPath($inputPath)
+    {
         return $inputPath;
     }
 
     /**
      * @param $inputPath
+     *
      * @return string
      */
-    public function getDecompressedPath($inputPath) {
+    public function getDecompressedPath($inputPath)
+    {
         return $inputPath;
     }
 }

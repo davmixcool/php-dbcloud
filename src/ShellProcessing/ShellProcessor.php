@@ -1,29 +1,33 @@
-<?php namespace PhpDbCloud\ShellProcessing;
+<?php
+
+namespace PhpDbCloud\ShellProcessing;
 
 use Symfony\Component\Process\Process;
 
 /**
- * Class CommandProcessor
- * @package PhpDbCloud
+ * Class CommandProcessor.
  */
-class ShellProcessor {
-
+class ShellProcessor
+{
     /** @var Process */
     private $process;
 
     /**
      * @param Process $process
      */
-    public function __construct(Process $process) {
+    public function __construct(Process $process)
+    {
         $this->process = $process;
     }
 
     /**
      * @param $command
+     *
      * @throws ShellProcessFailed
      * @throws \Symfony\Component\Process\Exception\LogicException
      */
-    public function process($command) {
+    public function process($command)
+    {
         if (empty($command)) {
             return;
         }
@@ -31,7 +35,7 @@ class ShellProcessor {
         $this->process->setCommandLine($command);
         $this->process->setTimeout(null);
         $this->process->run();
-        if ( ! $this->process->isSuccessful()) {
+        if (!$this->process->isSuccessful()) {
             throw new ShellProcessFailed($this->process->getErrorOutput());
         }
     }

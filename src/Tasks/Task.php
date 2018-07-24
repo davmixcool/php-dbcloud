@@ -1,13 +1,14 @@
-<?php namespace PhpDbCloud\Tasks;
+<?php
+
+namespace PhpDbCloud\Tasks;
 
 /**
- * Interface Task
- * @package PhpDbCloud\Tasks
+ * Interface Task.
  */
-interface Task {
-
+interface Task
+{
     /**
      * @return mixed
      */
     public function execute();
-} 
+}

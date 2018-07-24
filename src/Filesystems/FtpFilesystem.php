@@ -1,28 +1,34 @@
-<?php namespace PhpDbCloud\Filesystems;
+<?php
+
+namespace PhpDbCloud\Filesystems;
 
 use League\Flysystem\Adapter\Ftp;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Class FtpFilesystem
- * @package PhpDbCloud\Filesystems
+ * Class FtpFilesystem.
  */
-class FtpFilesystem implements Filesystem {
-
+class FtpFilesystem implements Filesystem
+{
     /**
      * Test fitness of visitor.
+     *
      * @param $type
+     *
      * @return bool
      */
-    public function handles($type) {
+    public function handles($type)
+    {
         return strtolower($type) == 'ftp';
     }
 
     /**
      * @param array $config
+     *
      * @return Flysystem
      */
-    public function get(array $config) {
+    public function get(array $config)
+    {
         return new Flysystem(new Ftp($config));
     }
 }

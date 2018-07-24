@@ -1,19 +1,18 @@
-<?php namespace PhpDbCloud;
+<?php
 
-use PhpDbCloud\Procedures;
-use Symfony\Component\Process\Process;
-use PhpDbCloud\Procedures\Sequence;
+namespace PhpDbCloud;
+
+use PhpDbCloud\Compressors\CompressorProvider;
 use PhpDbCloud\Databases\DatabaseProvider;
 use PhpDbCloud\Filesystems\FilesystemProvider;
-use PhpDbCloud\Compressors\CompressorProvider;
 use PhpDbCloud\ShellProcessing\ShellProcessor;
+use Symfony\Component\Process\Process;
 
 /**
- * Class Sync
- * @package Sync
+ * Class Sync.
  */
-class Sync {
-
+class Sync
+{
     /** @var FilesystemProvider */
     private $filesystems;
     /** @var DatabaseProvider */
@@ -23,10 +22,11 @@ class Sync {
 
     /**
      * @param \PhpDbCloud\Filesystems\FilesystemProvider $filesystems
-     * @param \PhpDbCloud\Databases\DatabaseProvider $databases
+     * @param \PhpDbCloud\Databases\DatabaseProvider     $databases
      * @param \PhpDbCloud\Compressors\CompressorProvider $compressors
      */
-    public function __construct(FilesystemProvider $filesystems, DatabaseProvider $databases, CompressorProvider $compressors) {
+    public function __construct(FilesystemProvider $filesystems, DatabaseProvider $databases, CompressorProvider $compressors)
+    {
         $this->filesystems = $filesystems;
         $this->databases = $databases;
         $this->compressors = $compressors;
@@ -35,7 +35,8 @@ class Sync {
     /**
      * @return Procedures\BackupProcedure
      */
-    public function makeBackup() {
+    public function makeBackup()
+    {
         return new Procedures\BackupProcedure(
             $this->filesystems,
             $this->databases,
@@ -47,7 +48,8 @@ class Sync {
     /**
      * @return Procedures\RestoreProcedure
      */
-    public function makeRestore() {
+    public function makeRestore()
+    {
         return new Procedures\RestoreProcedure(
             $this->filesystems,
             $this->databases,
@@ -59,7 +61,8 @@ class Sync {
     /**
      * @return ShellProcessing\ShellProcessor
      */
-    protected function getShellProcessor() {
+    protected function getShellProcessor()
+    {
         return new ShellProcessor(new Process('', null, null, null, null));
     }
-} 
+}
