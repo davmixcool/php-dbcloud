@@ -1,28 +1,34 @@
-<?php namespace PhpDbCloud\Filesystems;
+<?php
 
-use League\Flysystem\Sftp\SftpAdapter;
+namespace PhpDbCloud\Filesystems;
+
 use League\Flysystem\Filesystem as Flysystem;
+use League\Flysystem\Sftp\SftpAdapter;
 
 /**
- * Class SftpFilesystem
- * @package PhpDbCloud\Filesystems
+ * Class SftpFilesystem.
  */
-class SftpFilesystem implements Filesystem {
-
+class SftpFilesystem implements Filesystem
+{
     /**
      * Test fitness of visitor.
+     *
      * @param $type
+     *
      * @return bool
      */
-    public function handles($type) {
+    public function handles($type)
+    {
         return strtolower($type) == 'sftp';
     }
 
     /**
      * @param array $config
+     *
      * @return Flysystem
      */
-    public function get(array $config) {
+    public function get(array $config)
+    {
         return new Flysystem(new SftpAdapter($config));
     }
 }

@@ -1,24 +1,26 @@
-<?php namespace PhpDbCloud\Tasks\Storage;
+<?php
+
+namespace PhpDbCloud\Tasks\Storage;
 
 use League\Flysystem\Filesystem;
 use PhpDbCloud\Tasks\Task;
 
 /**
- * Class DeleteFile
- * @package PhpDbCloud\Tasks\Storage
+ * Class DeleteFile.
  */
-class DeleteFile implements Task {
-
+class DeleteFile implements Task
+{
     /** @var Filesystem */
     private $filesystem;
-    /** @var string*/
+    /** @var string */
     private $filePath;
 
     /**
      * @param Filesystem $filesystem
      * @param $filePath
      */
-    public function __construct(Filesystem $filesystem, $filePath) {
+    public function __construct(Filesystem $filesystem, $filePath)
+    {
         $this->filesystem = $filesystem;
         $this->filePath = $filePath;
     }
@@ -26,7 +28,8 @@ class DeleteFile implements Task {
     /**
      * @return bool
      */
-    public function execute() {
+    public function execute()
+    {
         return $this->filesystem->delete($this->filePath);
     }
 }

@@ -1,34 +1,39 @@
-<?php namespace PhpDbCloud\Filesystems;
+<?php
 
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
+namespace PhpDbCloud\Filesystems;
+
 use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Class Awss3Filesystem
- * @package PhpDbCloud\Filesystems
+ * Class Awss3Filesystem.
  */
-class Awss3Filesystem implements Filesystem {
-
+class Awss3Filesystem implements Filesystem
+{
     /**
      * @param $type
+     *
      * @return bool
      */
-    public function handles($type) {
+    public function handles($type)
+    {
         return strtolower($type) == 'awss3';
     }
 
     /**
      * @param array $config
+     *
      * @return \League\Flysystem\Filesystem
      */
-    public function get(array $config) {
+    public function get(array $config)
+    {
         $client = S3Client::factory([
             'credentials' => [
                 'key'    => $config['key'],
                 'secret' => $config['secret'],
             ],
-            'region' => $config['region'],
+            'region'  => $config['region'],
             'version' => isset($config['version']) ? $config['version'] : 'latest',
         ]);
 

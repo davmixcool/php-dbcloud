@@ -1,7 +1,10 @@
-<?php namespace PhpDbCloud\Compressors;
+<?php
+
+namespace PhpDbCloud\Compressors;
 
 /**
- * Class CompressorTypeNotSupported
- * @package PhpDbCloud\Compressors
+ * Class CompressorTypeNotSupported.
  */
-class CompressorTypeNotSupported extends \Exception {}
+class CompressorTypeNotSupported extends \Exception
+{
+}

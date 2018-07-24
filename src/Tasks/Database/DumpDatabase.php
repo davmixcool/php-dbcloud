@@ -1,15 +1,16 @@
-<?php namespace PhpDbCloud\Tasks\Database;
+<?php
 
-use PhpDbCloud\Tasks\Task;
+namespace PhpDbCloud\Tasks\Database;
+
 use PhpDbCloud\Databases\Database;
 use PhpDbCloud\ShellProcessing\ShellProcessor;
+use PhpDbCloud\Tasks\Task;
 
 /**
- * Class DumpDatabase
- * @package PhpDbCloud\Tasks\Database\Mysql
+ * Class DumpDatabase.
  */
-class DumpDatabase implements Task {
-
+class DumpDatabase implements Task
+{
     /** @var string */
     private $outputPath;
     /** @var ShellProcessor */
@@ -22,7 +23,8 @@ class DumpDatabase implements Task {
      * @param $outputPath
      * @param ShellProcessor $shellProcessor
      */
-    public function __construct(Database $database, $outputPath, ShellProcessor $shellProcessor) {
+    public function __construct(Database $database, $outputPath, ShellProcessor $shellProcessor)
+    {
         $this->outputPath = $outputPath;
         $this->shellProcessor = $shellProcessor;
         $this->database = $database;
@@ -31,7 +33,8 @@ class DumpDatabase implements Task {
     /**
      * @throws \PhpDbCloud\ShellProcessing\ShellProcessFailed
      */
-    public function execute() {
+    public function execute()
+    {
         return $this->shellProcessor->process($this->database->getDumpCommandLine($this->outputPath));
     }
 }

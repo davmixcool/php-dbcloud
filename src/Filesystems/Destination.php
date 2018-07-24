@@ -14,7 +14,8 @@ final class Destination
      * @param string $a_destination_filesystem
      * @param string $a_destination_path
      */
-    public function __construct($a_destination_filesystem, $a_destination_path) {
+    public function __construct($a_destination_filesystem, $a_destination_path)
+    {
         $this->destination_filesystem = $a_destination_filesystem;
         $this->destination_path = $a_destination_path;
     }
@@ -22,14 +23,16 @@ final class Destination
     /**
      * @return string
      */
-    public function destinationFilesystem() {
+    public function destinationFilesystem()
+    {
         return $this->destination_filesystem;
     }
 
     /**
      * @return string
      */
-    public function destinationPath() {
+    public function destinationPath()
+    {
         return $this->destination_path;
     }
 }
