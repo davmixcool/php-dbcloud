@@ -1,28 +1,32 @@
-<?php namespace PhpDbCloud\Procedures;
+<?php
+
+namespace PhpDbCloud\Procedures;
 
 use PhpDbCloud\Tasks\Task;
 
 /**
- * Class Sequence
- * @package PhpDbCloud\Procedures
+ * Class Sequence.
  */
-class Sequence {
-
+class Sequence
+{
     /** @var array|Task[] */
     private $tasks = [];
 
     /**
      * @param \PhpDbCloud\Tasks\Task $task
      */
-    public function add(Task $task) {
+    public function add(Task $task)
+    {
         $this->tasks[] = $task;
     }
 
     /**
      * Run the procedure.
+     *
      * @return void
      */
-    public function execute() {
+    public function execute()
+    {
         foreach ($this->tasks as $task) {
             $task->execute();
         }

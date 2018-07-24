@@ -1,7 +1,10 @@
-<?php namespace PhpDbCloud\ShellProcessing;
+<?php
+
+namespace PhpDbCloud\ShellProcessing;
 
 /**
- * Class ShellProcessFailed
- * @package PhpDbCloud\ShellProcessing
+ * Class ShellProcessFailed.
  */
-class ShellProcessFailed extends \Exception {}
+class ShellProcessFailed extends \Exception
+{
+}

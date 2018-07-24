@@ -1,7 +1,10 @@
-<?php namespace PhpDbCloud\Config;
+<?php
+
+namespace PhpDbCloud\Config;
 
 /**
- * Class ConfigNotFoundForConnection
- * @package PhpDbCloud\Config
+ * Class ConfigNotFoundForConnection.
  */
-class ConfigNotFoundForConnection extends \Exception {}
+class ConfigNotFoundForConnection extends \Exception
+{
+}

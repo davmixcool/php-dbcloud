@@ -1,16 +1,17 @@
-<?php namespace PhpDbCloud\Procedures;
+<?php
 
-use PhpDbCloud\Databases\DatabaseProvider;
+namespace PhpDbCloud\Procedures;
+
 use PhpDbCloud\Compressors\CompressorProvider;
+use PhpDbCloud\Databases\DatabaseProvider;
 use PhpDbCloud\Filesystems\FilesystemProvider;
 use PhpDbCloud\ShellProcessing\ShellProcessor;
 
 /**
- * Class Procedure
- * @package Procedures
+ * Class Procedure.
  */
-abstract class Procedure {
-
+abstract class Procedure
+{
     /** @var FilesystemProvider */
     protected $filesystems;
     /** @var DatabaseProvider */
@@ -22,12 +23,14 @@ abstract class Procedure {
 
     /**
      * @param FilesystemProvider $filesystemProvider
-     * @param DatabaseProvider $databaseProvider
+     * @param DatabaseProvider   $databaseProvider
      * @param CompressorProvider $compressorProvider
-     * @param ShellProcessor $shellProcessor
+     * @param ShellProcessor     $shellProcessor
+     *
      * @internal param Sequence $sequence
      */
-    public function __construct(FilesystemProvider $filesystemProvider, DatabaseProvider $databaseProvider, CompressorProvider $compressorProvider, ShellProcessor $shellProcessor) {
+    public function __construct(FilesystemProvider $filesystemProvider, DatabaseProvider $databaseProvider, CompressorProvider $compressorProvider, ShellProcessor $shellProcessor)
+    {
         $this->filesystems = $filesystemProvider;
         $this->databases = $databaseProvider;
         $this->compressors = $compressorProvider;
@@ -37,24 +40,32 @@ abstract class Procedure {
     /**
      * @param $name
      * @param null $filename
+     *
      * @throws \PhpDbCloud\Config\ConfigNotFoundForConnection
+     *
      * @return string
      */
-    protected function getWorkingFile($name, $filename = null) {
+    protected function getWorkingFile($name, $filename = null)
+    {
         if (is_null($filename)) {
             $filename = uniqid();
         }
+
         return sprintf('%s/%s', $this->getRootPath($name), $filename);
     }
 
     /**
      * @param $name
+     *
      * @throws \PhpDbCloud\Config\ConfigFieldNotFound
      * @throws \PhpDbCloud\Config\ConfigNotFoundForConnection
+     *
      * @return string
      */
-    protected function getRootPath($name) {
+    protected function getRootPath($name)
+    {
         $path = $this->filesystems->getConfig($name, 'root');
+
         return preg_replace('/\/$/', '', $path);
     }
-} 
+}

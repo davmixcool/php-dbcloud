@@ -1,25 +1,28 @@
-<?php namespace PhpDbCloud\Procedures;
+<?php
+
+namespace PhpDbCloud\Procedures;
 
 use PhpDbCloud\Tasks;
 
 /**
- * Class BackupProcedure
- * @package PhpDbCloud\Procedures
+ * Class BackupProcedure.
  */
-class BackupProcedure extends Procedure {
-
+class BackupProcedure extends Procedure
+{
     /**
-     * @param string $database
+     * @param string                                $database
      * @param \PhpDbCloud\Filesystems\Destination[] $destinations
-     * @param string $compression
+     * @param string                                $compression
+     *
      * @throws \PhpDbCloud\Filesystems\FilesystemTypeNotSupported
      * @throws \PhpDbCloud\Config\ConfigFieldNotFound
      * @throws \PhpDbCloud\Compressors\CompressorTypeNotSupported
      * @throws \PhpDbCloud\Databases\DatabaseTypeNotSupported
      * @throws \PhpDbCloud\Config\ConfigNotFoundForConnection
      */
-    public function run($database, array $destinations, $compression) {
-        $sequence = new Sequence;
+    public function run($database, array $destinations, $compression)
+    {
+        $sequence = new Sequence();
 
         // begin the life of a new working file
         $localFilesystem = $this->filesystems->get('local');

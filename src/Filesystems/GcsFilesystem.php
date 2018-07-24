@@ -1,28 +1,33 @@
-<?php namespace PhpDbCloud\Filesystems;
+<?php
 
-use League\Flysystem\AwsS3v2\AwsS3Adapter;
+namespace PhpDbCloud\Filesystems;
+
 use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v2\AwsS3Adapter;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Class GcsFilesystem
- * @package PhpDbCloud\Filesystems
+ * Class GcsFilesystem.
  */
-class GcsFilesystem implements Filesystem {
-
+class GcsFilesystem implements Filesystem
+{
     /**
      * @param $type
+     *
      * @return bool
      */
-    public function handles($type) {
+    public function handles($type)
+    {
         return strtolower($type) == 'gcs';
     }
 
     /**
      * @param array $config
+     *
      * @return \League\Flysystem\Filesystem
      */
-    public function get(array $config) {
+    public function get(array $config)
+    {
         $client = S3Client::factory([
             'key'      => $config['key'],
             'secret'   => $config['secret'],

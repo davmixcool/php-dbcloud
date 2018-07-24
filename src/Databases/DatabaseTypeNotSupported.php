@@ -1,7 +1,10 @@
-<?php namespace PhpDbCloud\Databases;
+<?php
+
+namespace PhpDbCloud\Databases;
 
 /**
- * Class DatabaseTypeNotSupported
- * @package PhpDbCloud\Databases
+ * Class DatabaseTypeNotSupported.
  */
-class DatabaseTypeNotSupported extends \Exception {}
+class DatabaseTypeNotSupported extends \Exception
+{
+}

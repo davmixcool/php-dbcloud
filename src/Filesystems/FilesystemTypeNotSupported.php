@@ -1,7 +1,10 @@
-<?php namespace PhpDbCloud\Filesystems;
+<?php
+
+namespace PhpDbCloud\Filesystems;
 
 /**
- * Class FilesystemTypeNotSupported
- * @package PhpDbCloud\Filesystems
+ * Class FilesystemTypeNotSupported.
  */
-class FilesystemTypeNotSupported extends \Exception {}
+class FilesystemTypeNotSupported extends \Exception
+{
+}
