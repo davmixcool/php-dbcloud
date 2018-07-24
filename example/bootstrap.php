@@ -15,6 +15,7 @@ $filesystems->add(new Filesystems\Awss3Filesystem);
 $filesystems->add(new Filesystems\GcsFilesystem);
 $filesystems->add(new Filesystems\DropboxFilesystem);
 $filesystems->add(new Filesystems\FtpFilesystem);
+$filesystems->add(new Filesystems\LocalFilesystem);
 $filesystems->add(new Filesystems\SftpFilesystem);
 
 $databases = new Databases\DatabaseProvider(Config::fromPhpFile('config/database.php'));

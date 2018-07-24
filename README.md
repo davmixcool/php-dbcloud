@@ -74,33 +74,36 @@ composer require league/flysystem-sftp
 ```php
 //config/database.php
 
-'development' => [
-    'type' => 'mysql',
-    'host' => 'localhost',
-    'port' => '3306',
-    'user' => 'root',
-    'pass' => 'password',
-    'database' => 'test',
-    // If singleTransaction is set to true, the --single-transcation flag will be set.
-    'singleTransaction' => false,
-    // Do not dump the given tables
-    // Set only table names, without database name
-    // Example: ['table1', 'table2']
-    // http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_ignore-table
-    'ignoreTables' => [],
-    // using ssl to connect to your database - active ssl-support (mysql only):
-    'ssl'=>false,
-    // add additional options to dump-command (like '--max-allowed-packet')
-    'extraParams'=>null,
-],
-'production' => [
-    'type' => 'postgresql',
-    'host' => 'localhost',
-    'port' => '5432',
-    'user' => 'postgres',
-    'pass' => 'password',
-    'database' => 'test',
-],
+return [
+
+    'development' => [
+        'type' => 'mysql',
+        'host' => 'localhost',
+        'port' => '3306',
+        'user' => 'root',
+        'pass' => 'password',
+        'database' => 'test',
+        // If singleTransaction is set to true, the --single-transcation flag will be set.
+        'singleTransaction' => false,
+        // Do not dump the given tables
+        // Set only table names, without database name
+        // Example: ['table1', 'table2']
+        // http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_ignore-table
+        'ignoreTables' => [],
+        // using ssl to connect to your database - active ssl-support (mysql only):
+        'ssl'=>false,
+        // add additional options to dump-command (like '--max-allowed-packet')
+        'extraParams'=>null,
+    ],
+    'production' => [
+        'type' => 'postgresql',
+        'host' => 'localhost',
+        'port' => '5432',
+        'user' => 'postgres',
+        'pass' => 'password',
+        'database' => 'test',
+    ],
+]
 ```
 
 
@@ -108,53 +111,59 @@ composer require league/flysystem-sftp
 
 ```php
 // config/storage.php
+return [
 
-'s3' => [
-    'type' => 'AwsS3',
-    'key'    => '',
-    'secret' => '',
-    'region' => 'us-east-1',
-    'version' => 'latest',
-    'bucket' => '',
-    'root'   => '',
-],
-'gcs' => [
-    'type' => 'Gcs',
-    'key'    => '',
-    'secret' => '',
-    'version' => 'latest',
-    'bucket' => '',
-    'root'   => '',
-],
-'dropbox' => [
-    'type' => 'DropboxV2',
-    'token' => '',
-    'key' => '',
-    'secret' => '',
-    'app' => '',
-    'root' => '',
-],
-'ftp' => [
-    'type' => 'Ftp',
-    'host' => '',
-    'username' => '',
-    'password' => '',
-    'root' => '',
-    'port' => 21,
-    'passive' => true,
-    'ssl' => true,
-    'timeout' => 30,
-],
-'sftp' => [
-    'type' => 'Sftp',
-    'host' => '',
-    'username' => '',
-    'password' => '',
-    'root' => '',
-    'port' => 21,
-    'timeout' => 10,
-    'privateKey' => '',
-],
+    'local' => [
+        'type' => 'Local',
+        'root' => '/path/to/working/directory',
+     ],
+    's3' => [
+        'type' => 'AwsS3',
+        'key'    => '',
+        'secret' => '',
+        'region' => 'us-east-1',
+        'version' => 'latest',
+        'bucket' => '',
+        'root'   => '',
+    ],
+    'gcs' => [
+        'type' => 'Gcs',
+        'key'    => '',
+        'secret' => '',
+        'version' => 'latest',
+        'bucket' => '',
+        'root'   => '',
+    ],
+    'dropbox' => [
+        'type' => 'DropboxV2',
+        'token' => '',
+        'key' => '',
+        'secret' => '',
+        'app' => '',
+        'root' => '',
+    ],
+    'ftp' => [
+        'type' => 'Ftp',
+        'host' => '',
+        'username' => '',
+        'password' => '',
+        'root' => '',
+        'port' => 21,
+        'passive' => true,
+        'ssl' => true,
+        'timeout' => 30,
+    ],
+    'sftp' => [
+        'type' => 'Sftp',
+        'host' => '',
+        'username' => '',
+        'password' => '',
+        'root' => '',
+        'port' => 21,
+        'timeout' => 10,
+        'privateKey' => '',
+    ],
+]
 ```
 
 
@@ -178,6 +187,7 @@ $filesystems->add(new Filesystems\Awss3Filesystem);
 $filesystems->add(new Filesystems\GcsFilesystem); 
 $filesystems->add(new Filesystems\DropboxFilesystem); 
 $filesystems->add(new Filesystems\FtpFilesystem); 
+$filesystems->add(new Filesystems\LocalFilesystem);
 $filesystems->add(new Filesystems\SftpFilesystem); 
 
 $databases = new Databases\DatabaseProvider(Config::fromPhpFile('config/database.php'));
